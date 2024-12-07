@@ -7,6 +7,7 @@ import Button from "./Button";
 import MenuSvg from "../utils/MenuSvg";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const pathname = usePathname();
@@ -79,13 +80,24 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4, ease: "easeOut" }}
               >
-                <Link
-                  href={item.url}
-                  onClick={handleClick}
-                  className="block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8"
-                >
-                  {item.title}
-                </Link>
+                {
+                  item.name == "Home" ?
+                    <Link
+                      href={item.url}
+                      onClick={handleClick}
+                      className="block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8"
+                    >
+                      {item.title}
+                    </Link> :
+                    <div
+                      href={item.url}
+                      onClick={() => toast.info("This page is Under-Development.")}
+                      className="block cursor-pointer relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8"
+                    >
+                      {item.title}
+                    </div>
+                }
+
               </motion.div>
             ))}
           </motion.div>
@@ -94,15 +106,25 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex lg:justify-end  rounded-full relative z-[999] shadow-2xl">
           <div className="relative z-[999] flex flex-row items-center rounded-full p-4">
-            {navigation.map((item) => (
-              <Link
-                key={item.id}
-                href={item.url}
-                className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
-              > 
-                {item.title}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.name == "Home" ? (
+                <Link
+                  key={item.id}
+                  href={item.url}
+                  className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
+                >
+                  {item.title}
+                </Link>
+              ) : (
+                <div
+                  key={item.id}
+                  onClick={() => toast.info("This page is Under-Development.")}
+                  className={`block relative cursor-pointer font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
+                >
+                  {item.title}
+                </div>
+              )
+            )}
           </div>
         </nav>
 
