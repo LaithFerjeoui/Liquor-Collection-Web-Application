@@ -55,7 +55,7 @@ const Header = () => {
       <div className="flex items-center justify-around lg:py-3">
         {/* Logo Section */}
         <Link href="/" className="flex justify-start mx-6 sm:mx-0 sm:justify-center items-center gap-4 w-[16rem]">
-          <h2 className={`font-extrabold font-playfair text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform ${isScrolled ? "text-[#d4af37]" : "text-white"}`}>
+          <h2 className={`font-normal font-playfair text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform ${isScrolled ? "text-[#d4af37]" : "text-white"}`}>
             Vintage Wines
           </h2>
         </Link>
