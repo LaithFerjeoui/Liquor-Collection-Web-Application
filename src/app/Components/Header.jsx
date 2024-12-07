@@ -51,11 +51,11 @@ const Header = () => {
   };
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-[999] ${openNavigation ? "bg-black" : "bg-black/90 backdrop-blur-sm"}`}>
+    <div className={`fixed top-0 left-0 w-full z-[999] ${openNavigation ? "bg-black/40" : " backdrop-blur-sm"}`}>
       <div className="flex items-center justify-around lg:py-3">
         {/* Logo Section */}
         <Link href="/" className="flex justify-start mx-6 sm:mx-0 sm:justify-center items-center gap-4 w-[16rem]">
-          <h2 className={`font-extrabold text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform ${isScrolled ? "text-[#d4af37]" : "text-white"}`}>
+          <h2 className={`font-extrabold font-playfair text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform ${isScrolled ? "text-[#d4af37]" : "text-white"}`}>
             Vintage Wines
           </h2>
         </Link>
@@ -64,7 +64,7 @@ const Header = () => {
         {openNavigation && (
           <div className="fixed inset-0 bg-black opacity-70 z-40 lg:hidden" onClick={toggleNavigation}></div>
         )}
-        <nav className={`${openNavigation ? "flex" : "hidden"} fixed top-[5rem] left-0 right-0 bottom-0 bg-black/90 z-50 lg:hidden`}>
+        <nav className={`${openNavigation ? "flex" : "hidden"} fixed top-[5rem] left-0 right-0 bottom-0 bg-black/40 z-50 lg:hidden`}>
           <motion.div
             key={openNavigation ? "open" : "closed"}
             className="relative z-50 flex flex-col items-center justify-center m-auto"
@@ -99,7 +99,7 @@ const Header = () => {
                 key={item.id}
                 href={item.url}
                 className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
-              >
+              > 
                 {item.title}
               </Link>
             ))}

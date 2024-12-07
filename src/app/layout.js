@@ -1,6 +1,14 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import DependenciesInjection from "./Components/DependenciesInjection";
+import { Playfair_Display } from 'next/font/google';
+
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'], 
+  weight: ['400', '700'], 
+  variable: '--font-playfair', 
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,8 +30,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${playfairDisplay.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
         <DependenciesInjection>
           {children}
         </DependenciesInjection>
