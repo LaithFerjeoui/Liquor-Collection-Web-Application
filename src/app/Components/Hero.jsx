@@ -8,7 +8,7 @@ const Hero = () => {
     const words = `Discover the finest selection of timeless wines from the most renowned cellars.`;
 
     return (
-        <section className="relative h-screen w-full overflow-hidden">
+        <section className="relative z-[99] h-screen w-full overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0">
                 <Image

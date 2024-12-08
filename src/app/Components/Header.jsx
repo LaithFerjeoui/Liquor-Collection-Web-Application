@@ -12,27 +12,7 @@ import { toast } from "react-toastify";
 const Header = () => {
   const pathname = usePathname();
   const [openNavigation, setOpenNavigation] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    if (pathname === "/") {
-      const handleScroll = () => {
-        if (window.scrollY > 860) {
-          setIsScrolled(true);
-        } else {
-          setIsScrolled(false);
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    } else {
-      setIsScrolled(true);
-    }
-  }, [pathname]);
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -56,7 +36,7 @@ const Header = () => {
       <div className="flex items-center justify-around lg:py-3">
         {/* Logo Section */}
         <Link href="/" className="flex justify-start mx-6 sm:mx-0 sm:justify-center items-center gap-4 w-[16rem]">
-          <h2 className={`font-normal font-playfair text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform ${isScrolled ? "text-[#d4af37]" : "text-white"}`}>
+          <h2 className={`font-normal font-playfair text-3xl md:text-3xl py-6 hover:mb-2 duration-300 transition-all ease-in-out transform text-white`}>
             Vintage Wines
           </h2>
         </Link>
@@ -130,7 +110,7 @@ const Header = () => {
 
         {/* Menu Button for Mobile */}
         <Button className="ml-auto lg:hidden z-50" px="px-3" onClick={toggleNavigation}>
-          <MenuSvg openNavigation={openNavigation} isScrolled={isScrolled} />
+          <MenuSvg openNavigation={openNavigation}  />
         </Button>
       </div>
     </div>
