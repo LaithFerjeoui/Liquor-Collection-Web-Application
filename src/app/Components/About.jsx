@@ -127,7 +127,7 @@ const About = () => {
             >
               Meet{" "}
               <span className="bg-gradient-to-r from-[#ff7e00] to-[#FFD700] text-transparent bg-clip-text font-playfair">
-                Rick's Vintage Wines Collection
+                Rick&apos;s  Vintage Wines Collection
               </span>
             </motion.h3>
             <motion.p
@@ -138,7 +138,7 @@ const About = () => {
             >
               A lifelong lover of fine spirits and an adventurous palate, Rick has
               traveled the world in pursuit of the rarest and most exquisite liquors. His passion goes
-              beyond mere tasting—it’s about uncovering the stories behind each bottle and celebrating
+              beyond mere tasting—it&apos;s about uncovering the stories behind each bottle and celebrating
               the craftsmanship that makes them unique.
             </motion.p>
             <motion.p
@@ -147,7 +147,7 @@ const About = () => {
               whileInView="visible"
               className="leading-relaxed font-playfair"
             >
-              This collection is more than just a display; it’s a journey through time and taste,
+              This collection is more than just a display; it&apos;s a journey through time and taste,
               preserving the art and legacy of liquor-making. From the smoky allure of rare single
               malts to the velvety elegance of vintage cognacs, every bottle has a tale waiting to be
               shared.
