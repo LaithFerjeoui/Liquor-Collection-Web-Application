@@ -1,0 +1,8 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Entire background is visible -->
+  <rect fill="black" />
+  <!-- Outer circle (transparent outer area) -->
+  <circle cx="150" cy="150" r="100" fill="white" />
+  <!-- Inner circle (visible hole in the middle) -->
+  <circle cx="150" cy="150" r="50" fill="black" />
+</svg>

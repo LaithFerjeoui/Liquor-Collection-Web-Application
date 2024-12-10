@@ -18,3 +18,21 @@ body {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }
 }
+
+@layer components {
+  .image {
+    -webkit-mask-image: url("./utils/donut-mask.svg");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    mask-image: url("./utils/donut-mask.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+  }
+  .text-stroke {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 1px;
+  }
+}
