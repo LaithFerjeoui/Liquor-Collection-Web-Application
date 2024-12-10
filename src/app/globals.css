@@ -35,4 +35,7 @@ body {
     -webkit-text-stroke-color: white;
     -webkit-text-stroke-width: 1px;
   }
+  .prespective{
+    perspective: 2200px;
+  }
 }
