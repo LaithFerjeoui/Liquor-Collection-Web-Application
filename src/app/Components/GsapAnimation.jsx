@@ -17,8 +17,8 @@ const GsapAnimation = React.forwardRef((props, ref) => {
             ScrollTrigger.create({
                 trigger: ref.current,
                 pin: ref.current,
-                start: "top top",
                 pinSpacing: false,
+                start: "top top",
                 end: "bottom bottom",
                 endTrigger: ".last",
             });
