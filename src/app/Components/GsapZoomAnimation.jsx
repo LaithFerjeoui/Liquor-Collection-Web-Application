@@ -1,7 +1,6 @@
 "use client"
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, {  useLayoutEffect, useRef } from 'react';
 import { LampDemo } from './ui/lamp';
-import dynamic from 'next/dynamic';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -67,5 +66,7 @@ const GsapZoomAnimation = () => {
         </div>
     );
 };
+
+GsapZoomAnimation.displayName = "GsapZoomAnimation";
 
 export default GsapZoomAnimation;

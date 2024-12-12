@@ -14,7 +14,7 @@ export function LampDemo({ ref }) {
                     duration: 0.8,
                     ease: "easeInOut",
                 }}
-                className="mt-8 bg-gradient-to-br last from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
+                className="mt-8 bg-gradient-to-br  from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
                 Our Vintage <br /> Gallery
             </motion.h1>
         </LampContainer>)
@@ -30,7 +30,7 @@ export const LampContainer = ({
         (<div
             ref={ref}
             className={cn(
-                "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#0d0d0d] w-full rounded-md z-0",
+                "relative flex min-h-screen last flex-col items-center justify-center overflow-hidden bg-[#0d0d0d] w-full rounded-md z-0",
                 className
             )}>
             <div
