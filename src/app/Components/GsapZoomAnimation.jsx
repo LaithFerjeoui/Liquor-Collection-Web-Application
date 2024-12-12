@@ -1,8 +1,9 @@
 "use client"
-import React, {  useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { LampDemo } from './ui/lamp';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Gallery } from './Gallery';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -63,6 +64,7 @@ const GsapZoomAnimation = () => {
 
             {/* LampDemo Component */}
             <LampDemo ref={container} />
+            <Gallery />
         </div>
     );
 };
