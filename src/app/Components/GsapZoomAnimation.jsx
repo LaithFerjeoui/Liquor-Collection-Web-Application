@@ -42,7 +42,7 @@ const GsapZoomAnimation = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <div className="relative">
+        <div className="relative" id='featured'>
             {/* Background */}
             <div className="bg-[#0d0d0d] absolute h-screen w-screen z-[-1]" ref={bg1} />
 

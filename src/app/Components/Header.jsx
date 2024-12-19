@@ -1,18 +1,38 @@
 "use client";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import { navigation } from "../utils/Index";
 import Button from "./Button";
 import MenuSvg from "../utils/MenuSvg";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { toast } from "react-toastify";
 
 const Header = () => {
-  const pathname = usePathname();
   const [openNavigation, setOpenNavigation] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5, // Adjust the threshold for better responsiveness
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -32,7 +52,7 @@ const Header = () => {
   };
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-[999] ${openNavigation ? "bg-black/40" : " backdrop-blur-sm"}`}>
+    <div className={`fixed top-0 left-0 w-full z-[999] ${openNavigation ? "bg-black/40" : "backdrop-blur-sm"}`}>
       <div className="flex items-center justify-around lg:py-3">
         {/* Logo Section */}
         <Link href="/" className="flex justify-start mx-6 sm:mx-0 sm:justify-center items-center gap-4 w-[16rem]">
@@ -60,57 +80,40 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.4, ease: "easeOut" }}
               >
-                {
-                  item.name == "Home" ?
-                    <Link
-                      href={item.url}
-                      onClick={handleClick}
-                      className="block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8"
-                    >
-                      {item.title}
-                    </Link> :
-                    <div
-                      href={item.url}
-                      onClick={() => toast.info("This page is Under-Development.")}
-                      className="block cursor-pointer relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8"
-                    >
-                      {item.title}
-                    </div>
-                }
-
+                <a
+                  href={`${item.url}`}
+                  onClick={handleClick}
+                  className={`block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8 ${
+                    activeSection === item.url ? "text-[#d4af37] font-semibold" : "font-medium"
+                  }`}
+                >
+                  {item.title}
+                </a>
               </motion.div>
             ))}
           </motion.div>
         </nav>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex lg:justify-end  rounded-full relative z-[999] shadow-2xl">
+        <nav className="hidden lg:flex lg:justify-end rounded-full relative z-[999] shadow-2xl">
           <div className="relative z-[999] flex flex-row items-center rounded-full p-4">
-            {navigation.map((item) =>
-              item.name == "Home" ? (
-                <Link
-                  key={item.id}
-                  href={item.url}
-                  className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
-                >
-                  {item.title}
-                </Link>
-              ) : (
-                <div
-                  key={item.id}
-                  onClick={() => toast.info("This page is Under-Development.")}
-                  className={`block relative cursor-pointer font-code text-md text-white transition-colors hover:text-color-1 ${item.url === pathname ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"} lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
-                >
-                  {item.title}
-                </div>
-              )
-            )}
+            {navigation.map((item) => (
+              <a
+                key={item.id}
+                href={`${item.url}`}
+                className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${
+                  activeSection === item.url ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"
+                } lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
+              >
+                {item.title}
+              </a>
+            ))}
           </div>
         </nav>
 
         {/* Menu Button for Mobile */}
         <Button className="ml-auto lg:hidden z-50" px="px-3" onClick={toggleNavigation}>
-          <MenuSvg openNavigation={openNavigation}  />
+          <MenuSvg openNavigation={openNavigation} />
         </Button>
       </div>
     </div>

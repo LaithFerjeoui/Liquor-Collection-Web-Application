@@ -65,7 +65,7 @@ const About = () => {
 
   return (
     <Container>
-      <section className="text-[#ffffff] relative py-16 ">
+      <section className="text-[#ffffff] relative py-16 " id="about" >
         <Spotlight className="-top-20 right-0 md:right-60 md:-top-20" fill="#7C4F25" />
 
         {/* Ornament Above Heading */}
