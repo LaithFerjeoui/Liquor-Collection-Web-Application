@@ -18,6 +18,9 @@ body {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @layer components {
   .image {
@@ -33,17 +36,17 @@ body {
   .img-container {
     perspective: 1000px;
   }
-  
+
   .image {
     transform-origin: center center;
   }
-  
+
   .text-stroke {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-color: white;
     -webkit-text-stroke-width: 1px;
   }
-  .prespective{
+  .prespective {
     perspective: 2200px;
   }
 }

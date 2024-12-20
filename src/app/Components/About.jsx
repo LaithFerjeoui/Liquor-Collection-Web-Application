@@ -5,63 +5,10 @@ import Container from "./Container";
 import { Spotlight } from "./ui/Spotlight";
 import { motion } from "framer-motion";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { containerVariants, imageVariants, textVariants2, textVariants3 } from "../utils/Index";
 
 const About = () => {
   const quote = `"Every sip tells a story.`;
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 25 },
-    },
-  };
-
-  const textVariants2 = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 25,
-        delay: 0.2,
-      },
-    },
-  };
-  const textVariants3 = {
-    hidden: { opacity: 0, x: 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 25,
-        delay: 0.6,
-      },
-    },
-  };
-  const imageVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { type: "spring", stiffness: 100, damping: 25 },
-    },
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.4,
-        delayChildren: 0.2,
-      },
-    },
-  };
 
   return (
     <Container>
@@ -82,7 +29,7 @@ const About = () => {
 
         {/* Section Title */}
         <motion.h2
-          variants={textVariants}
+          variants={textVariants2}
           initial="hidden"
           whileInView="visible"
           className="text-center text-3xl md:text-4xl mb-4 tracking-wide font-playfair"

@@ -11,22 +11,24 @@ const Header = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
+  console.log(activeSection)
   useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5, // Adjust the threshold for better responsiveness
+      threshold: 0.4, 
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          const sectionId = entry.target.id;
+          setActiveSection(`#${sectionId}`);
         }
       });
     }, observerOptions);
 
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     return () => {
@@ -83,9 +85,8 @@ const Header = () => {
                 <a
                   href={`${item.url}`}
                   onClick={handleClick}
-                  className={`block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8 ${
-                    activeSection === item.url ? "text-[#d4af37] font-semibold" : "font-medium"
-                  }`}
+                  className={`block relative text-white font-code text-2xl transition-colors hover:text-color-1 px-6 py-6 md:py-8 ${activeSection === item.url ? "text-[#d4af37] font-semibold" : "font-medium"
+                    }`}
                 >
                   {item.title}
                 </a>
@@ -101,9 +102,7 @@ const Header = () => {
               <a
                 key={item.id}
                 href={`${item.url}`}
-                className={`block relative font-code text-md text-white transition-colors hover:text-color-1 ${
-                  activeSection === item.url ? "z-2 lg:text-[#d4af37] font-semibold" : "font-medium"
-                } lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
+                className={`block relative font-code text-md text-white transition-colors hover:text-color-1 lg:leading-5 lg:hover:text-[#d4af37] px-4 xl:px-8`}
               >
                 {item.title}
               </a>
