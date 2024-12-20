@@ -13,7 +13,7 @@ export default function History() {
                     alt="ornament"
                     className="absolute -right-0 z-[9999] -top-14 block lg:hidden transform scale-x-[-1]"
                 />
-                <div className="relative isolate overflow-hidden mt-36 lg:overflow-visible ">
+                <div className="relative isolate overflow-hidden mt-36 lg:overflow-visible " id='history'>
                     <Image
                         src={"/img/ornament.png"}
                         width={200}
